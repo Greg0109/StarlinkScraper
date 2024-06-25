@@ -2,6 +2,9 @@
 
 Starlink Scraper is a Python-based web scraper that checks the visibility of Starlink satellites and notifies the user about their visibility status and any upcoming launches. The scraper uses Selenium to extract visibility data from the Find Starlink website and checks the launch status through the SpaceDevs API.
 
+### **NOTE**:
+This project was originally built to notify the user, the notification function has been replaced for a print so that it could be published in github. The project is hosted in a server with a lot of dependencies for the notification, which would've made the project unnecessarily complex for a simple scraper
+
 ## Features
 
 - Scrapes visibility data for Starlink satellites from the Find Starlink website.
