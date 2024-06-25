@@ -36,6 +36,10 @@ Run the scraper using the following command:
 python3 main.py
 ```
 
+## Example Output
+
+![image](https://github.com/Greg0109/StarlinkScraper/assets/9938142/505d4de8-f781-4cba-8db5-ad8ae3ebd313)
+
 ## Files
 
 - `main.py`: Main script containing the `StarlinkScraper` class.
