@@ -118,34 +118,30 @@ class StarlinkScraper:
                         break
 
     def notify(self):
-        # pylint: disable=line-too-long
         """
         Notify the user about the visibility status of Starlink satellites
         """
-        notification_message = ""
-        send_notification = False
+        visibility_status = self.visibility_status
+        sections = []
 
-        if not self.visibility_status['visibility']:
-            notification_message += "Starlink Not Visible\n"
+        if not visibility_status['visibility']:
+            sections.append("Starlink Not Visible")
 
-        if len(self.visibility_status['good']) > 0:
-            send_notification = True
-            notification_message += "\nGood visibility:\n"
-            for time_entry in self.visibility_status['good']:
-                notification_message += f"{time_entry['date']} \n {time_entry['visible']} \n {time_entry['direction']}\n"
+        for category in ['good', 'average']:
+            if visibility_status[category]:
+                sections.append(f"\n{category.capitalize()} visibility:")
+                sections.extend(
+                    f"{entry['date']} \n {entry['visible']} \n {entry['direction']}"
+                    for entry in visibility_status[category]
+                )
 
-        if len(self.visibility_status['average']) > 0:
-            send_notification = True
-            notification_message += "\nAverage visibility:\n"
-            for time_entry in self.visibility_status['average']:
-                notification_message += f"{time_entry['date']} \n {time_entry['visible']} \n {time_entry['direction']}\n"
+        if visibility_status['launch_today']:
+            sections.append("\nStarlink satellite launch today!")
 
-        if self.visibility_status['launch_today']:
-            notification_message += "\nStarlink satellite launch today!"
+        sections.append(f"\n{self.URL}")
 
-        notification_message += f"\n{self.URL}"
-        if send_notification:
-            print(notification_message)
+        if any(len(visibility_status[category]) > 0 for category in ['good', 'average']):
+            print("\n".join(sections))
 
     def run(self):
         """
