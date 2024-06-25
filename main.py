@@ -141,9 +141,9 @@ class StarlinkScraper:
                 notification_message += f"{time_entry['date']} \n {time_entry['visible']} \n {time_entry['direction']}\n"
 
         if self.visibility_status['launch_today']:
-            notification_message += "\nStarlink satellite launch today!\n"
+            notification_message += "\nStarlink satellite launch today!"
 
-        notification_message += f"{self.URL}"
+        notification_message += f"\n{self.URL}"
         if send_notification:
             print(notification_message)
 
