@@ -1,3 +1,4 @@
 pip-tools
 selenium
 requests
+virtualenv

@@ -9,7 +9,7 @@ from selenium.webdriver.chrome.options import Options
 import requests
 
 
-class StarlinkScrapper:
+class StarlinkScraper:
     """
     Starlink visibility checker
     """
@@ -23,7 +23,7 @@ class StarlinkScrapper:
             'visibility': False,
             'launch_today': False
         }
-        self.current_time = datetime.utcnow()
+        self.current_time = datetime.now()
         self.twenty_four_hours_ago = self.current_time - timedelta(hours=24)
         self.twenty_four_hours_from_now = self.current_time + timedelta(hours=24)
         chrome_options = Options()
@@ -165,5 +165,5 @@ class StarlinkScrapper:
 
 
 if __name__ == '__main__':
-    checker = StarlinkScrapper()
+    checker = StarlinkScraper()
     checker.run()
