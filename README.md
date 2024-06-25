@@ -13,7 +13,7 @@ This project was originally built to notify the user, the notification function 
 
 ## Prerequisites
 
-- Python 3.6+
+- Python 3.9+
 - Google Chrome browser
 - ChromeDriver
 
