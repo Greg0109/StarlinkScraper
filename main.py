@@ -63,6 +63,7 @@ class StarlinkScraper:
             for timing_entry in timing_entries:
                 time_entry = time_entry_base.copy()
                 date = timing_entry.find_element(By.CLASS_NAME, 'entryTiming').text
+                date = date.replace('(past) ', '')
                 date_of_view = datetime.strptime(date, "%I:%M %p, %d %b %Y")
                 if not self.check_date(date_of_view):
                     continue
